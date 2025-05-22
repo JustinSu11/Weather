@@ -1,6 +1,5 @@
 import axios from 'axios'
 import fetchWeatherInfo from './FetchWeatherInfo'
-import { reverse } from 'dns'
 
 const apiKey = process.env.REACT_APP_API_KEY
 const apiUrl = process.env.REACT_APP_API_URL_FOR_FETCHING_COORDINATES_WITH_CITY_NAME
