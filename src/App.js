@@ -1,4 +1,4 @@
-import MainDisplay from './components/MainDisplay';
+import MainDisplay from './frontend/components/MainDisplay';
 
 function App() {
   return (
