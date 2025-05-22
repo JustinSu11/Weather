@@ -9,7 +9,7 @@ export default function MainDisplay() {
     const [citiesList, setCitiesList] = useState([selectedCity.cityName])
 
     function addCityToList(cityAndWeatherInfo) {
-        var oldCitiesList = citiesList
+        let oldCitiesList = citiesList
         if (!oldCitiesList.contains(cityAndWeatherInfo)) {
             oldCitiesList.push(cityAndWeatherInfo)
             setCitiesList(oldCitiesList)
