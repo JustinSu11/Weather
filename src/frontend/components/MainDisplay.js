@@ -8,15 +8,15 @@ export default function MainDisplay() {
     //invoke api fetch for weather info
     const [selectedCity, setSelectedCity] = useState(null)
 
-    function addCityToList(cityAndWeatherInfo) {
-        if (!citiesList.some(cityAndWeatherInfo)) {
-            let newCitiesList = [...citiesList, cityAndWeatherInfo]
-            setCitiesList(newCitiesList)
-            setSelectedCity(cityAndWeatherInfo)
-        } else {
-            alert('City already in list')
-        }
-    }
+    // function addCityToList(cityAndWeatherInfo) {
+    //     if (!citiesList.some(cityAndWeatherInfo)) {
+    //         let newCitiesList = [...citiesList, cityAndWeatherInfo]
+    //         setCitiesList(newCitiesList)
+    //         setSelectedCity(cityAndWeatherInfo)
+    //     } else {
+    //         alert('City already in list')
+    //     }
+    // }
 
     useEffect(() => {
         setSelectedCity(navigator.geolocation.getCurrentPosition(fetchCoordinatesFromName, console.log('Error getting location')))
