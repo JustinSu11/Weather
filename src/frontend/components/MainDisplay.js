@@ -1,23 +1,29 @@
 import fetchCoordinatesFromName from '../../backend/weatherAPI/FetchCoordinatesFromName'
 import WeatherInfoContainer from './WeatherInfoContainer'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 export default function MainDisplay() {
-    //invoke api fetch for weather info
-    const [selectedCity, setSelectedCity] = useState(addCityToList(navigator.geolocation.getCurrentPosition(fetchCoordinatesFromName, console.log('Error getting location'))))
     //state to hold cities list 
     const [citiesList, setCitiesList] = useState([])
+    //invoke api fetch for weather info
+    const [selectedCity, setSelectedCity] = useState(null)
 
     function addCityToList(cityAndWeatherInfo) {
-        let oldCitiesList = citiesList
-        if (!oldCitiesList.contains(cityAndWeatherInfo)) {
-            oldCitiesList.push(cityAndWeatherInfo)
-            setCitiesList(oldCitiesList)
+        if (!citiesList.some(cityAndWeatherInfo)) {
+            let newCitiesList = [...citiesList, cityAndWeatherInfo]
+            setCitiesList(newCitiesList)
             setSelectedCity(cityAndWeatherInfo)
         } else {
             alert('City already in list')
         }
     }
+
+    useEffect(() => {
+        setSelectedCity(navigator.geolocation.getCurrentPosition(fetchCoordinatesFromName, console.log('Error getting location')))
+        let newCitiesList = [...citiesList, selectedCity]
+        setCitiesList(newCitiesList)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <div className="main-display">
