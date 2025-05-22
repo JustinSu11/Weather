@@ -6,7 +6,7 @@ export default function MainDisplay() {
     //invoke api fetch for weather info
     const [selectedCity, setSelectedCity] = useState(addCityToList(navigator.geolocation.getCurrentPosition(fetchCoordinatesFromName, console.log('Error getting location'))))
     //state to hold cities list 
-    const [citiesList, setCitiesList] = useState([selectedCity.cityName])
+    const [citiesList, setCitiesList] = useState([])
 
     function addCityToList(cityAndWeatherInfo) {
         let oldCitiesList = citiesList
