@@ -25,13 +25,25 @@ export default function MainDisplay() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    return (
-        <div className="main-display">
-            <div className="main-display-header">Weather App</div>
-            <div className="main-display-weather-graph"></div>
-            <div className="main-display-content">
-                <WeatherInfoContainer weatherInfo={selectedCity.weatherInfo} />
+    if (selectedCity !== null) {
+        return (
+            <div className="main-display">
+                <div className="main-display-header">Weather App</div>
+                <div className="main-display-weather-graph"></div>
+                <div className="main-display-content">
+                    <WeatherInfoContainer weatherInfo={selectedCity.weatherInfo} />
+                </div>
             </div>
-        </div>
-    )
+        )
+    } else {
+        return (
+            <div className="main-display">
+                <div className="main-display-header">Weather App</div>
+                <div className="main-display-weather-graph"></div>
+                <div className="main-display-content">
+                    loading...
+                </div>
+            </div>
+        )
+    }
 }
