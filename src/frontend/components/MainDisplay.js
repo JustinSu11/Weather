@@ -41,7 +41,7 @@ export default function MainDisplay() {
                 <div className="main-display-header">Weather App</div>
                 <div className="main-display-weather-graph"></div>
                 <div className="main-display-content">
-                    loading...
+                    <p>loading...</p>
                 </div>
             </div>
         )
