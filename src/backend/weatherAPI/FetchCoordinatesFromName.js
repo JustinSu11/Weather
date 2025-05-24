@@ -21,9 +21,14 @@ export default async function fetchCoordinatesFromName(userInput) {
             throw error
         }
     } else {
-        const weatherInfo = await fetchWeatherInfo(userInput.coords.latitude, userInput.coords.longitude)
-        const reverseGeocodingResponse = await axios.get(apiUrlForReverseGeocoding, { params: { lat: userInput.coords.latitude, lon: userInput.coords.longitude, appid: apiKey}})
-        const cityName = reverseGeocodingResponse.data[0].name
-        return {cityName, weatherInfo}
+        try {
+            const weatherInfo = await fetchWeatherInfo(userInput.coords.latitude, userInput.coords.longitude)
+            const reverseGeocodingResponse = await axios.get(apiUrlForReverseGeocoding, { params: { lat: userInput.coords.latitude, lon: userInput.coords.longitude, appid: apiKey}})
+            const cityName = reverseGeocodingResponse.data[0].name
+            return {cityName, weatherInfo}
+        } catch (error) {
+            console.log('Error fetching weather info from current latitude and longitude: ', error)
+            throw error
+        }
     }
 }
