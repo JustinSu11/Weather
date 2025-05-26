@@ -1,5 +1,5 @@
 import fetchUserLocation from '../../backend/fetchUserLocation'
-import fetchCoordinatesFromName from '../../backend/weatherAPI/FetchCoordinatesFromName'
+// import fetchCoordinatesFromName from '../../backend/weatherAPI/FetchCoordinatesFromName'
 import WeatherInfoContainer from './WeatherInfoContainer'
 import React, { useState, useEffect } from 'react'
 
