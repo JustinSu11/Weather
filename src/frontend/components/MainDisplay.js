@@ -45,7 +45,7 @@ export default function MainDisplay() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    if (mainDisplayLoading === false) {
+    if (mainDisplayLoading === false && errorGettingUserLocation === false) {
         return (
             <div className="main-display">
                 <div className="main-display-header">Weather App</div>
