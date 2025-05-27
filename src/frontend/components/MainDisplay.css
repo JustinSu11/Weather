@@ -1,4 +1,4 @@
-#main-display {
+.main-display {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -6,7 +6,7 @@
     float: top;
 }
 
-#main-display-header{
+.main-display-header{
     display: flex;
     flex-direction: row;
     width: 100%;
