@@ -8,8 +8,8 @@ export default function WeatherInfoContainer(props) {
             <div className = "weather-info-content">
                 <div className = "weather-info-item">{props.weatherInfo.current.humidity}%</div>
                 <div className = "weather-info-item">{props.weatherInfo.current.feels_like}°</div>
-                <div className = "weather-info-item">{props.weatherInfo.current.weather[0].wind_speed}mph</div>
-                <div className = "weather-info-item">{props.weatherInfo.current.weather[0].wind_gust}mph</div>
+                <div className = "weather-info-item">{props.weatherInfo.current.weather.wind_speed}mph</div>
+                <div className = "weather-info-item">{props.weatherInfo.current.weather.wind_gust}mph</div>
             </div>
         </div>
     )
