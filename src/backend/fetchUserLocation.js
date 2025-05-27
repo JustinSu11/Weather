@@ -1,7 +1,7 @@
 import fetchCoordinatesFromName from "./weatherAPI/FetchCoordinatesFromName"
 
 export default function fetchUserLocation() {
-    new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         if (!navigator.geolocation) {
             reject(new Error('Geolocation is not supported by this browser.'))
             return

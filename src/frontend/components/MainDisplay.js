@@ -6,13 +6,10 @@ import React, { useState, useEffect } from 'react'
 export default function MainDisplay() {
     //state to hold cities list 
     const [citiesList, setCitiesList] = useState([])
-    //invoke api fetch for weather info
-    const [selectedCity, setSelectedCity] = useState(async () => {
-        const userLocation = await fetchUserLocation()
-        let newCitiesList = [...citiesList, selectedCity]
-        setCitiesList(newCitiesList)
-        return userLocation
-    })
+    //state to hold selected city
+    const [selectedCity, setSelectedCity] = useState(null)
+    //loading state for MainDisplay
+    const [mainDisplayLoading, setMainDisplayLoading] = useState(true)
 
     // function addCityToList(cityAndWeatherInfo) {
     //     if (!citiesList.some(cityAndWeatherInfo)) {
@@ -24,7 +21,29 @@ export default function MainDisplay() {
     //     }
     // }
 
-    if (selectedCity !== null) {
+    useEffect(() => {
+        const initialLoad = async () => {
+            try {
+                const userLocation = await fetchUserLocation()
+                if (userLocation) {
+                    setSelectedCity(userLocation)
+                    if (citiesList.some(city => city.cityName === userLocation.cityName)) {
+                        console.log('City already in list: ', userLocation.cityName)
+                    } else {
+                        setCitiesList(prevCitiesList => [...prevCitiesList, userLocation])
+                    }
+                }
+            } catch (error) {
+                console.error("Failed to fetch user location: ", error)
+            } finally {
+                setMainDisplayLoading(false)
+            }
+        }
+        initialLoad()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    if (!mainDisplayLoading) {
         return (
             <div className="main-display">
                 <div className="main-display-header">Weather App</div>
