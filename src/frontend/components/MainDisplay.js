@@ -49,7 +49,7 @@ export default function MainDisplay() {
         return (
             <div className="main-display">
                 <div className="main-display-header">Weather App</div>
-                <div className="main-display-weather-graph"></div>
+                <div className="main-display-city-name">{selectedCity.cityName}</div>
                 <div className="main-display-content">
                     <WeatherInfoContainer weatherInfo={selectedCity.weatherInfo} />
                 </div>
