@@ -25,7 +25,9 @@ export default function MainDisplay() {
     //     }
     // }
 
+    //useEffect to run once on initial render
     useEffect(() => {
+        // will attempt to fetch the user's location, set selected city, and retrieve the weather info
         const initialLoad = async () => {
             try {
                 const userLocation = await fetchUserLocation()
