@@ -7,7 +7,12 @@ export default function MainDisplay() {
     //state to hold cities list 
     const [citiesList, setCitiesList] = useState([])
     //invoke api fetch for weather info
-    const [selectedCity, setSelectedCity] = useState(null)
+    const [selectedCity, setSelectedCity] = useState(async () => {
+        const userLocation = await fetchUserLocation()
+        let newCitiesList = [...citiesList, selectedCity]
+        setCitiesList(newCitiesList)
+        return userLocation
+    })
 
     // function addCityToList(cityAndWeatherInfo) {
     //     if (!citiesList.some(cityAndWeatherInfo)) {
@@ -18,13 +23,6 @@ export default function MainDisplay() {
     //         alert('City already in list')
     //     }
     // }
-
-    useEffect(() => {
-        setSelectedCity(fetchUserLocation())
-        let newCitiesList = [...citiesList, selectedCity]
-        setCitiesList(newCitiesList)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
 
     if (selectedCity !== null) {
         return (
