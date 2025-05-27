@@ -3,6 +3,9 @@ import fetchUserLocation from '../../backend/fetchUserLocation'
 import WeatherInfoContainer from './WeatherInfoContainer'
 import React, { useState, useEffect } from 'react'
 
+//css import
+import './MainDisplay.css'
+
 export default function MainDisplay() {
     //state to hold cities list 
     const [citiesList, setCitiesList] = useState([])
