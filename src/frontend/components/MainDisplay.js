@@ -10,6 +10,7 @@ export default function MainDisplay() {
     const [selectedCity, setSelectedCity] = useState(null)
     //loading state for MainDisplay
     const [mainDisplayLoading, setMainDisplayLoading] = useState(true)
+    const [errorGettingUserLocation, setErrorGettingUserLocation] = useState(false)
 
     // function addCityToList(cityAndWeatherInfo) {
     //     if (!citiesList.some(cityAndWeatherInfo)) {
@@ -35,6 +36,7 @@ export default function MainDisplay() {
                 }
             } catch (error) {
                 console.error("Failed to fetch user location: ", error)
+                setErrorGettingUserLocation(true)
             } finally {
                 setMainDisplayLoading(false)
             }
@@ -43,13 +45,23 @@ export default function MainDisplay() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    if (!mainDisplayLoading) {
+    if (mainDisplayLoading === false) {
         return (
             <div className="main-display">
                 <div className="main-display-header">Weather App</div>
                 <div className="main-display-weather-graph"></div>
                 <div className="main-display-content">
                     <WeatherInfoContainer weatherInfo={selectedCity.weatherInfo} />
+                </div>
+            </div>
+        )
+    } else if (errorGettingUserLocation === true) {
+        return (
+            <div className="main-display">
+                <div className="main-display-header">Weather App</div>
+                <div className="main-display-weather-graph"></div>
+                <div className="main-display-content">
+                    <p>Error getting user location. Please check your browser settings.</p>
                 </div>
             </div>
         )

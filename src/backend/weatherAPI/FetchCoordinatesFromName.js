@@ -3,7 +3,7 @@ import fetchWeatherInfo from './FetchWeatherInfo'
 
 const apiKey = process.env.REACT_APP_API_KEY
 const apiUrl = process.env.REACT_APP_API_URL_FOR_FETCHING_COORDINATES_WITH_CITY_NAME
-const apiUrlForReverseGeocoding = process.env.REACT_APP_API_URL_FOR_REVERSE_GEOCODING
+const apiUrlForReverseGeocoding = process.env.API_URL_FOR_REVERSE_GEOCODING
 
 //returns the an object with the city name and the weather info
 export default async function fetchCoordinatesFromName(userInput) {
