@@ -54,7 +54,14 @@ export default function MainDisplay() {
         return (
             <div className="main-display">
                 <div className="main-display-header">Weather App</div>
-                <div className="main-display-city-name">{selectedCity.cityName}</div>
+                <div className="main-display-primary-weather-info">
+                    <div className="primary-weather-info-city-name">
+                        {selectedCity.cityName}
+                    </div>
+                    <div className="primary-weather-info-temperature">
+                        {Math.round(selectedCity.weatherInfo.current.temp)}°
+                    </div>
+                </div>
                 <div className="main-display-content">
                     <WeatherInfoContainer weatherInfo={selectedCity.weatherInfo} />
                 </div>

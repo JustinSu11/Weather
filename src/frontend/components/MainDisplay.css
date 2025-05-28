@@ -13,5 +13,11 @@
     height: 10%;
     justify-content: space-between;
     padding-left: 50vw;
-    padding-right: auto;
+}
+
+.main-display-primary-weather-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50vw;
+    align-items: center;
 }
