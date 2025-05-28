@@ -4,15 +4,11 @@
     width: 100%;
     height: 100%;
     float: top;
+    align-items: center;
 }
 
 .main-display-header{
     display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 10%;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .main-display-primary-weather-info {
@@ -23,5 +19,4 @@
 
 .primary-weather-info-city-name {
     display: flex;
-    align-items: center;
 }
