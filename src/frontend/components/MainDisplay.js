@@ -62,7 +62,7 @@ export default function MainDisplay() {
                         {Math.round(selectedCity.weatherInfo.current.temp)}°
                     </div>
                 </div>
-                <div className="main-display-content">
+                <div className="main-display-secondary-weather-info">
                     <WeatherInfoContainer weatherInfo={selectedCity.weatherInfo} />
                 </div>
             </div>
