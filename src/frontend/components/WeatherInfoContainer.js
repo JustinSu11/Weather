@@ -1,5 +1,8 @@
 import React from 'react'
 
+// import css
+import './WeatherInfoContainer.css'
+
 export default function WeatherInfoContainer(props) {
     return (
         //container for selected city weather info
