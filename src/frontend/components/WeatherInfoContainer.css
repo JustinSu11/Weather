@@ -9,7 +9,7 @@
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 5vw;
-    grid-row-gap: 5vh;
+    grid-row-gap: 2.5vh;
 }
 
 .weather-info-item {
