@@ -9,6 +9,7 @@ export default function WeatherInfoContainer(props) {
         <div className = "weather-info-container">
             <div className = "weather-info-header">Weather Info</div>
             <div className = "weather-info-content">
+                {/* Humidity card */}
                 <div className = "weather-info-item">
                     <div className="weather-info-item-title">
                         <p>Humidity</p>
@@ -17,6 +18,7 @@ export default function WeatherInfoContainer(props) {
                         {props.weatherInfo.current.humidity}%
                     </div>
                 </div>
+                {/* Feels Like card */}
                 <div className = "weather-info-item">
                     <div className="weather-info-item-title">
                         <p>Feels Like</p>
@@ -25,6 +27,7 @@ export default function WeatherInfoContainer(props) {
                         {Math.round(props.weatherInfo.current.feels_like)}°
                     </div>
                 </div>
+                {/* Wind Speed card */}
                 <div className = "weather-info-item">
                     <div className="weather-info-item-title">
                         <p>Wind Speed</p>
