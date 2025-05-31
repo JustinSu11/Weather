@@ -1,23 +1,26 @@
 import React from 'react'
+import WeatherInfoCard from './WeatherInfoCard'
 
 // import css
 import './WeatherInfoContainer.css'
 
 export default function WeatherInfoContainer(props) {
+
     return (
         //container for selected city weather info
         <div className = "weather-info-container">
             <div className = "weather-info-header">Weather Info</div>
             <div className = "weather-info-content">
                 {/* Humidity card */}
-                <div className = "weather-info-item">
+                <WeatherInfoCard weatherDetailName="Humidity" weatherDetailValue={props.weatherInfo.current.humidity} weatherDetailUnit='%'/>
+                {/* <div className = "weather-info-item">
                     <div className="weather-info-item-title">
                         <p>Humidity</p>
                     </div>
                     <div className="weather-info-item-content">
                         {props.weatherInfo.current.humidity}%
                     </div>
-                </div>
+                </div> */}
                 {/* Feels Like card */}
                 <div className = "weather-info-item">
                     <div className="weather-info-item-title">
