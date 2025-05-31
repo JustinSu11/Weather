@@ -5,8 +5,8 @@ import Typography from '@mui/material/Typography';
 export default function WeatherInfoCard(prop) {
     return (
         <Card>
-            <CardContent>
-                <Typography >
+            <CardContent sx={{ alignItems: 'center'}}>
+                <Typography>
                     {prop.weatherDetailName}
                 </Typography>
                 <br />
