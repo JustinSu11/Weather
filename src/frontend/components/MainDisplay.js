@@ -1,6 +1,6 @@
 import fetchUserLocation from '../../backend/fetchUserLocation'
+import WeatherInfoCard from './WeatherInfoCard'
 // import fetchCoordinatesFromName from '../../backend/weatherAPI/FetchCoordinatesFromName'
-import WeatherInfoContainer from './WeatherInfoContainer'
 import React, { useState, useEffect } from 'react'
 
 //css import
@@ -54,17 +54,7 @@ export default function MainDisplay() {
         return (
             <div className="main-display">
                 <div className="main-display-header">Weather App</div>
-                <div className="main-display-primary-weather-info">
-                    <div className="primary-weather-info-city-name">
-                        {selectedCity.cityName}
-                    </div>
-                    <div className="primary-weather-info-temperature">
-                        {Math.round(selectedCity.weatherInfo.current.temp)}°
-                    </div>
-                </div>
-                <div className="main-display-secondary-weather-info">
-                    <WeatherInfoContainer weatherInfo={selectedCity.weatherInfo} />
-                </div>
+                <WeatherInfoCard selectedCity={selectedCity} />
             </div>
         )
     } else if (errorGettingUserLocation === true) {
