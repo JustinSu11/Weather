@@ -19,7 +19,7 @@ export default function WeatherInfoCard(prop) {
                         {Math.round(prop.selectedCity.weatherInfo.current.temp)}°
                     </Typography>
                 </div>
-                <Divider orientation='vertical'/>
+                <Divider />
                 <List>
                     <ListItem>
                         <ListItemText primary='Feels Like: ' secondary={`${prop.selectedCity.weatherInfo.current.feels_like}°`} />
