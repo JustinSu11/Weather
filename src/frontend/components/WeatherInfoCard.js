@@ -10,7 +10,7 @@ export default function WeatherInfoCard(prop) {
     return (
         <Card>
             <CardContent sx={{display: 'flex', flexDirection: 'row'}} >
-                <div>
+                <div style={{alignSelf: 'center'}}>
                     <Typography>
                         {prop.selectedCity.cityName}
                     </Typography>
