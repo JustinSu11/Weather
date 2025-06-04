@@ -8,7 +8,7 @@ import ListItemText from '@mui/material/ListItemText';
 
 export default function WeatherInfoCard(prop) {
     return (
-        <Card>
+        <Card sx={{ width: '80vw' }}>
             <CardContent sx={{display: 'flex', flexDirection: 'row'}} >
                 <div style={{alignSelf: 'center'}}>
                     <Typography>
