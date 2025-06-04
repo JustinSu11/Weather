@@ -9,7 +9,7 @@ import ListItemText from '@mui/material/ListItemText';
 export default function WeatherInfoCard(prop) {
     return (
         <Card sx={{ width: '80vw' }}>
-            <CardContent sx={{display: 'flex', flexDirection: 'row'}} >
+            <CardContent sx={{display: 'flex', flexDirection: 'row', width: '100%'}} >
                 <div style={{alignSelf: 'center'}}>
                     <Typography>
                         {prop.selectedCity.cityName}
