@@ -9,8 +9,8 @@ import ListItemText from '@mui/material/ListItemText';
 export default function WeatherInfoCard(prop) {
     return (
         <Card sx={{ width: '80vw' }}>
-            <CardContent sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}} >
-                <div style={{alignSelf: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <CardContent sx={{display: 'flex', flexDirection: 'row', alignItems: 'center'}} >
+                <div style={{flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                     <Typography>
                         {prop.selectedCity.cityName}
                     </Typography>
@@ -20,7 +20,7 @@ export default function WeatherInfoCard(prop) {
                     </Typography>
                 </div>
                 <Divider orientation='vertical' flexItem />
-                <List>
+                <List sx={{flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                     <ListItem>
                         <ListItemText primary='Feels Like: ' secondary={`${prop.selectedCity.weatherInfo.current.feels_like}°`} />
                     </ListItem>
