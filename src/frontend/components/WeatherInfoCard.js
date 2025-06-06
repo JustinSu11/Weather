@@ -20,9 +20,9 @@ export default function WeatherInfoCard(prop) {
                     </Typography>
                 </div>
                 <Divider orientation='vertical' flexItem />
-                <List sx={{flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                <List sx={{flex: 1}}>
                     <ListItem>
-                        <ListItemText primary='Feels Like: ' secondary={`${prop.selectedCity.weatherInfo.current.feels_like}°`} />
+                        <ListItemText primary='Feels Like: ' secondary={`${Math.round(prop.selectedCity.weatherInfo.current.feels_like)}°`} />
                     </ListItem>
                     <Divider variant='middle' />
                     <ListItem>
@@ -30,7 +30,7 @@ export default function WeatherInfoCard(prop) {
                     </ListItem>
                     <Divider variant='middle' />
                     <ListItem>
-                        <ListItemText primary='Wind Speed: ' secondary={`${prop.selectedCity.weatherInfo.current.wind_speed} mph`} />
+                        <ListItemText primary='Wind Speed: ' secondary={`${Math.round(prop.selectedCity.weatherInfo.current.wind_speed)} mph`} />
                     </ListItem>
                     <Divider variant='middle' />
                 </List>
