@@ -22,7 +22,7 @@ export default function SearchBar() {
                     setSuggestions(await fetchCitySuggestions(newInputValue))
                 }, 500)
             }}
-            options={suggestions}
+            options={suggestions.map((suggestion) => suggestion.name)}
         />
     )
 }
