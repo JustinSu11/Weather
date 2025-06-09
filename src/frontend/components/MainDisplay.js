@@ -6,6 +6,7 @@ import SearchBar from './SearchBar'
 
 //css import
 import './MainDisplay.css'
+import fetchCoordinatesFromName from '../../backend/weatherAPI/FetchCoordinatesFromName'
 
 export default function MainDisplay() {
     //state to hold cities list 
@@ -51,11 +52,25 @@ export default function MainDisplay() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    const handleCitySelect = async (cityName) => {
+        if (!cityName) {
+            return
+        }
+        setMainDisplayLoading(true)
+        try {
+            let cityAndWeatherInfo = await fetchCoordinatesFromName(cityName)
+            setSelectedCity(cityAndWeatherInfo)
+        } catch (error) {
+            console.error('Error fetching weather info for selected city: ', error)
+            setErrorGettingUserLocation(true)
+        }
+    }
+
     if (mainDisplayLoading === false && errorGettingUserLocation === false) {
         return (
             <div className="main-display">
                 <div className="main-display-header">Weather App</div>
-                <SearchBar />
+                <SearchBar onCitySelect={handleCitySelect} />
                 <WeatherInfoCard selectedCity={selectedCity} />
             </div>
         )
@@ -63,7 +78,7 @@ export default function MainDisplay() {
         return (
             <div className="main-display">
                 <div className="main-display-header">Weather App</div>
-                <SearchBar />
+                <SearchBar onCitySelect={handleCitySelect} />
                 <div className="main-display-content">
                     <p>Error getting user location. Please check your browser settings.</p>
                 </div>
@@ -73,7 +88,7 @@ export default function MainDisplay() {
         return (
             <div className="main-display">
                 <div className="main-display-header">Weather App</div>
-                <SearchBar />
+                <SearchBar onCitySelect={handleCitySelect} />
                 <div className="main-display-content">
                     <p>loading...</p>
                 </div>
