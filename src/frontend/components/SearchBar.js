@@ -63,7 +63,7 @@ export default function SearchBar({ onCitySelect }) {
             onInputChange={(newInputValue) => {
                 setInputValue(newInputValue)
             }}
-            options={suggestions.map((suggestion) => suggestion.name)}
+            options={ inputValue !== '' && loading === false ? suggestions.map((suggestion) => suggestion.name) : ['No suggestions found']}
             disableClearable
             freeSolo
             type='search'
