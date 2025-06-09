@@ -4,7 +4,7 @@ const apiKey = process.env.REACT_APP_API_KEY
 const apiUrl = process.env.REACT_APP_API_URL_FOR_FETCHING_COORDINATES_WITH_CITY_NAME
 
 export default async function fetchCitySuggestions(userInput) {
-    if (!userInput || userInput.trim() === '') {
+    if (!userInput) {
         return []
     }
     try {
