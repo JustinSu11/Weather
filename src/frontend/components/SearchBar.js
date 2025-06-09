@@ -22,7 +22,7 @@ export default function SearchBar() {
                     setSuggestions(await fetchCitySuggestions(newInputValue))
                 }, 500)
             }}
-            options={suggestions.map((suggestion) => suggestion.name)}
+            options={suggestions.length > 0 ? suggestions.map((option) => option.name) : ['City not found']}
         />
     )
 }
