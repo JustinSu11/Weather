@@ -32,6 +32,7 @@ export default function SearchBar({ onCitySelect }) {
             setLoading(true)
             try {
                 const fetchedSuggestions = await fetchCitySuggestions(query)
+                console.log(fetchedSuggestions)
                 setSuggestions(fetchedSuggestions)
             } catch (error) {
                 console.error('SearchBar: Failed to fetch city suggestions:', error)
@@ -62,7 +63,7 @@ export default function SearchBar({ onCitySelect }) {
             onInputChange={(newInputValue) => {
                 setInputValue(newInputValue)
             }}
-            options={loading ? [] : suggestions.map((suggestion) => suggestion.name)}
+            options={suggestions.map((suggestion) => suggestion.name)}
             disableClearable
             freeSolo
             type='search'
