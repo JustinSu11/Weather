@@ -21,6 +21,7 @@ export default function SearchBar({ onCitySelect }) {
     const [ selectedValue, setSelectedValue ] = useState(null)
     const [ loading, setLoading ] = useState(false)
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const debouncedFetchCitySuggestions = useCallback(
         debounce(async (query) => {
             if(!query) {
@@ -37,8 +38,13 @@ export default function SearchBar({ onCitySelect }) {
                 setSuggestions([])
             }
             setLoading(false)
-        }, 500)
+        }, 500),
+        []
     )
+
+    useEffect(() => {
+        debouncedFetchCitySuggestions(inputValue)
+    }, [inputValue, debouncedFetchCitySuggestions])
 
     return (
         <Autocomplete
@@ -54,10 +60,7 @@ export default function SearchBar({ onCitySelect }) {
             }}
             inputValue={inputValue}
             onInputChange={(newInputValue) => {
-                setTimeout(async () => {
-                    setInputValue(newInputValue)
-                    setSuggestions(await fetchCitySuggestions(newInputValue))
-                }, 500)
+                setInputValue(newInputValue)
             }}
             options={suggestions.map((suggestion) => suggestion.name)}
             disableClearable
