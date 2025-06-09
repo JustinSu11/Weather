@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Autocomplete from '@mui/joy/Autocomplete';
-import { popularCityNames } from '../../../config';
+import { popularCityNames } from '../../config';
 import fetchCitySuggestions from '../../backend/weatherAPI/FetchCitySuggestions';
 
 export default function SearchBar() {
