@@ -4,9 +4,9 @@ import { popularCityNames } from '../../config';
 import fetchCitySuggestions from '../../backend/weatherAPI/FetchCitySuggestions';
 
 export default function SearchBar() {
-    const { value, setValue } = useState(null)
-    const { inputValue, setInputValue } = useState('')
-    const { suggestions, setSuggestions } = useState([])
+    const [ value, setValue ] = useState(null)
+    const [ inputValue, setInputValue ] = useState('')
+    const [ suggestions, setSuggestions ] = useState([])
 
     return (
         <Autocomplete
@@ -22,7 +22,7 @@ export default function SearchBar() {
                     setSuggestions(await fetchCitySuggestions(newInputValue))
                 }, 500)
             }}
-            options={suggestions.length > 0 ? suggestions.map((option) => option.name) : ['City not found']}
+            options={suggestions.length > 0 ? suggestions.map((suggestion) => suggestion.name) : ['City not found']}
         />
     )
 }
