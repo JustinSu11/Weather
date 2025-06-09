@@ -2,6 +2,7 @@ import fetchUserLocation from '../../backend/fetchUserLocation'
 import WeatherInfoCard from './WeatherInfoCard'
 // import fetchCoordinatesFromName from '../../backend/weatherAPI/FetchCoordinatesFromName'
 import React, { useState, useEffect } from 'react'
+import SearchBar from './SearchBar'
 
 //css import
 import './MainDisplay.css'
@@ -54,6 +55,7 @@ export default function MainDisplay() {
         return (
             <div className="main-display">
                 <div className="main-display-header">Weather App</div>
+                <SearchBar />
                 <WeatherInfoCard selectedCity={selectedCity} />
             </div>
         )
@@ -61,7 +63,7 @@ export default function MainDisplay() {
         return (
             <div className="main-display">
                 <div className="main-display-header">Weather App</div>
-                <div className="main-display-weather-graph"></div>
+                <SearchBar />
                 <div className="main-display-content">
                     <p>Error getting user location. Please check your browser settings.</p>
                 </div>
@@ -71,7 +73,7 @@ export default function MainDisplay() {
         return (
             <div className="main-display">
                 <div className="main-display-header">Weather App</div>
-                <div className="main-display-weather-graph"></div>
+                <SearchBar />
                 <div className="main-display-content">
                     <p>loading...</p>
                 </div>
