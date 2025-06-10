@@ -30,7 +30,6 @@ export default function SearchBar({ onCitySelect }) {
                 return
             }
             setLoading(true)
-            console.log('loading set to true')
             try {
                 const fetchedSuggestions = await fetchCitySuggestions(query)
                 console.log(fetchedSuggestions)
@@ -62,7 +61,7 @@ export default function SearchBar({ onCitySelect }) {
             }}
             inputValue={inputValue}
             onInputChange={(newInputValue) => {
-                setInputValue(newInputValue)
+                setInputValue(`${newInputValue}`);
             }}
             options={ inputValue !== '' && loading === false ? suggestions.map((suggestion) => suggestion.name) : ['No suggestions found']}
             disableClearable
