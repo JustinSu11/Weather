@@ -62,7 +62,7 @@ export default function SearchBar({ onCitySelect }) {
             inputValue={inputValue}
             onInputChange={(newInputValue) => {
                 console.log('Input changed:', newInputValue)
-                setInputValue(`${newInputValue}`);
+                setInputValue(newInputValue.nativeEvent.data);
             }}
             options={ inputValue !== '' && loading === false ? suggestions.map((suggestion) => suggestion.name) : ['No suggestions found']}
             freeSolo
