@@ -30,6 +30,7 @@ export default function SearchBar({ onCitySelect }) {
                 return
             }
             setLoading(true)
+            console.log('loading set to true')
             try {
                 const fetchedSuggestions = await fetchCitySuggestions(query)
                 console.log(fetchedSuggestions)
