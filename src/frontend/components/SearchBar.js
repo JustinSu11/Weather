@@ -51,7 +51,7 @@ export default function SearchBar({ onCitySelect }) {
         <Autocomplete
             placeholder={popularCityNames[Math.floor(Math.random() * popularCityNames.length)]}
             value={selectedValue}
-            onChange={(newValue) => {
+            onChange={(event, newValue) => {
                 setSelectedValue(newValue)
                 if (onCitySelect) {
                     onCitySelect(newValue)
