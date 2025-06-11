@@ -59,6 +59,7 @@ export default function MainDisplay() {
         setMainDisplayLoading(true)
         try {
             let cityAndWeatherInfo = await fetchCoordinatesFromName(cityName)
+            console.log('handle city select: ', cityAndWeatherInfo)
             setSelectedCity(cityAndWeatherInfo)
         } catch (error) {
             console.error('Error fetching weather info for selected city: ', error)
