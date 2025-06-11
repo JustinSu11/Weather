@@ -64,6 +64,8 @@ export default function MainDisplay() {
         } catch (error) {
             console.error('Error fetching weather info for selected city: ', error)
             setErrorGettingUserLocation(true)
+        } finally {
+            setMainDisplayLoading(false)
         }
     }
 
