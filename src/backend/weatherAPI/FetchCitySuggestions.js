@@ -8,7 +8,7 @@ export default async function fetchCitySuggestions(userInput) {
         return []
     }
     try {
-        const response = await axios.get(apiUrl, { params: { q: userInput, appid: apiKey } })
+        const response = await axios.get(apiUrl, { params: { q: userInput, limit: '10', appid: apiKey } })
         let uniqueResponse = response.data.filter((o, index) => response.data.findIndex(obj => obj.name === o.name) === index) // Remove duplicates based on city name
         return uniqueResponse
     } catch (error) {
