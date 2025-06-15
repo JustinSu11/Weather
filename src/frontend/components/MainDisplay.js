@@ -52,6 +52,7 @@ export default function MainDisplay() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    // used when a suggestion is selected from the search bar to update the weather info card
     const handleCitySelect = async (cityName) => {
         if (!cityName) {
             return
@@ -69,6 +70,7 @@ export default function MainDisplay() {
         }
     }
 
+    //conditional rendering to display main content, error message, or loading message
     if (mainDisplayLoading === false && errorGettingUserLocation === false) {
         return (
             <div className="main-display">

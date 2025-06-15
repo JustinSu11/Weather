@@ -2,6 +2,8 @@ import axios from 'axios'
 
 const apiKey = process.env.REACT_APP_API_KEY
 
+// gets weather info using coordinates
+
 export default async function fetchWeatherInfo(latitude, longitude) {
     const apiUrl = process.env.REACT_APP_API_URL
     try {

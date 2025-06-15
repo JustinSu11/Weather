@@ -15,12 +15,14 @@ function debounce(func, delay) {
     }
 }
 
+// SearchBar component that gets an array of city suggestions when there is a pause in user input
 export default function SearchBar({ onCitySelect }) {
     const [ inputValue, setInputValue ] = useState('')
     const [ suggestions, setSuggestions ] = useState([])
     const [ selectedValue, setSelectedValue ] = useState(null)
     const [ loading, setLoading ] = useState(false)
 
+    //This stops suggestions from being fetch on every input change and only fetches suggestions when the user has stopped typing
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const debouncedFetchCitySuggestions = useCallback(
         debounce(async (query) => {
@@ -43,10 +45,13 @@ export default function SearchBar({ onCitySelect }) {
         []
     )
 
+    //Calls the above function whenever the input value changes
     useEffect(() => {
         debouncedFetchCitySuggestions(inputValue)
     }, [inputValue, debouncedFetchCitySuggestions])
 
+    //Autocomplete component from MUI that acts as the search bar
+    //also displays a placeholder text with a random popular city name
     return (
         <Autocomplete
             placeholder={popularCityNames[Math.floor(Math.random() * popularCityNames.length)]}

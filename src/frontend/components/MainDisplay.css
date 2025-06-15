@@ -8,6 +8,10 @@
     background-color: #7fc5f7;
 }
 
+.main-display > * {
+    padding-top: 2.5vh;
+}
+
 .main-display-header{
     display: flex;
 }

@@ -5,6 +5,7 @@ const apiKey = process.env.REACT_APP_API_KEY
 const apiUrl = process.env.REACT_APP_API_URL_FOR_FETCHING_COORDINATES_WITH_CITY_NAME
 const apiUrlForReverseGeocoding = process.env.REACT_APP_API_URL_FOR_REVERSE_GEOCODING
 
+//takes an input and depending on if the input is a coordinate or a city name it will call the fetchWeatherInfo method for that city and return the object with the name
 //returns the an object with the city name and the weather info
 export default async function fetchCoordinatesFromName(userInput) {
     //check if input is the position object from the browser, if it is then fetch weather info using the latitude and longitude

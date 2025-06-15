@@ -1,5 +1,8 @@
 import fetchCoordinatesFromName from "./weatherAPI/FetchCoordinatesFromName"
 
+//Get the user's latitude and longitude using the browser's geolocation API and fetch weather info using the coordinates
+//used on initial render
+
 export default function fetchUserLocation() {
     return new Promise((resolve, reject) => {
         if (!navigator.geolocation) {

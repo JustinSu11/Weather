@@ -6,10 +6,14 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 
+//displays important weather information for the selected city
 export default function WeatherInfoCard(prop) {
     return (
+        //container for the weather info card
         <Card sx={{ width: '80vw' }}>
+            {/*Actual content inside card*/}
             <CardContent sx={{display: 'flex', flexDirection: 'row', alignItems: 'center'}} >
+                {/*container for the city name and it's temperature*/}
                 <div style={{flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                     <Typography>
                         {prop.selectedCity.cityName}
@@ -20,6 +24,7 @@ export default function WeatherInfoCard(prop) {
                     </Typography>
                 </div>
                 <Divider orientation='vertical' flexItem />
+                {/*secondary weather info display*/}
                 <List sx={{flex: 1}}>
                     <ListItem>
                         <ListItemText primary='Feels Like: ' secondary={`${Math.round(prop.selectedCity.weatherInfo.current.feels_like)}°`} />
