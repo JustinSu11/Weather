@@ -8,9 +8,9 @@ const CityNavigator = (props) => {
     return (
         <Tabs>
             <TabList>
-                for (const city of props.citiesList) {
-                    <Tab variant="plain" color="neutral">city.cityName</Tab>
-                }
+                {props.citiesList.map((city) => (
+                    <Tab variant="plain" color="neutral">{city.cityName}</Tab>
+                ))}
             </TabList>
             <TabPanel>
                 <WeatherInfoCard selectedCity={props.selectedCity} />
