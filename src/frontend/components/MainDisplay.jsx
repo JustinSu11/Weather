@@ -1,8 +1,8 @@
 import fetchUserLocation from '../../backend/fetchUserLocation'
-import WeatherInfoCard from './WeatherInfoCard'
 // import fetchCoordinatesFromName from '../../backend/weatherAPI/FetchCoordinatesFromName'
 import React, { useState, useEffect } from 'react'
 import SearchBar from './SearchBar'
+import CityNavigator from './CityNavigator'
 
 //css import
 import './MainDisplay.css'
@@ -76,7 +76,7 @@ export default function MainDisplay() {
             <div className="main-display">
                 <div className="main-display-header">Weather App</div>
                 <SearchBar onCitySelect={handleCitySelect} />
-                <WeatherInfoCard selectedCity={selectedCity} />
+                <CityNavigator citiesList={citiesList} selectedCity={selectedCity} />
             </div>
         )
     } else if (errorGettingUserLocation === true) {
