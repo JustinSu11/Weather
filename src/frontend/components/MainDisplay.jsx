@@ -74,13 +74,22 @@ export default function MainDisplay() {
         }
     }
 
+    const handleTabChange = (cityName) => {
+        const cityToSelect = citiesList.find(city => city.cityName === cityName)
+        if (cityToSelect) {
+            setSelectedCity(cityToSelect)
+        } else {
+            console.warn('City not found in cities list:', cityName)
+        }
+    }
+
     //conditional rendering to display main content, error message, or loading message
     if (mainDisplayLoading === false && errorGettingUserLocation === false) {
         return (
             <div className="main-display">
                 <div className="main-display-header">Weather App</div>
                 <SearchBar onCitySelect={handleCitySelect} />
-                <CityNavigator citiesList={citiesList} selectedCity={selectedCity} onTabChange={handleCitySelect}/>
+                <CityNavigator citiesList={citiesList} selectedCity={selectedCity} onTabChange={handleTabChange}/>
             </div>
         )
     } else if (errorGettingUserLocation === true) {
