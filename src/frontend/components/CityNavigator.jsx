@@ -4,7 +4,7 @@ import Tab from '@mui/joy/Tab';
 import TabPanel from '@mui/joy/TabPanel';
 import WeatherInfoCard from './WeatherInfoCard';
 
-export const CityNavigator = (props) => {
+const CityNavigator = (props) => {
     return (
         <Tabs>
             <TabList>
@@ -18,3 +18,5 @@ export const CityNavigator = (props) => {
         </Tabs>
     )
 }
+
+export default CityNavigator;
