@@ -6,7 +6,7 @@ import WeatherInfoCard from './WeatherInfoCard';
 
 const CityNavigator = (props) => {
     return (
-        <Tabs sx={{ borderRadius: '4px' }} value={props.selectedCity?.cityName || null} onChange={(event, newValue) => {
+        <Tabs sx={{ borderRadius: '4px' }} onChange={(event, newValue) => {
             props.onTabChange(newValue)
         }}>
             <TabList>
