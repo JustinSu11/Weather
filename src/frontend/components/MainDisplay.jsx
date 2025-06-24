@@ -63,6 +63,7 @@ export default function MainDisplay() {
             console.log('handle city select: ', cityAndWeatherInfo)
             setSelectedCity(cityAndWeatherInfo)
             setCitiesList([...citiesList, cityName])
+            console.log('Updated cities list: ', citiesList)
         } catch (error) {
             console.error('Error fetching weather info for selected city: ', error)
             setErrorGettingUserLocation(true)
