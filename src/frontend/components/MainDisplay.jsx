@@ -63,7 +63,7 @@ export default function MainDisplay() {
             console.log('handle city select: ', cityAndWeatherInfo)
             setSelectedCity(cityAndWeatherInfo)
             if (!citiesList.includes(cityName)){
-                setCitiesList([...citiesList, cityName])
+                setCitiesList(prevCitiesList => [...prevCitiesList, cityName])
                 console.log('Updated cities list: ', citiesList)
             }
         } catch (error) {
