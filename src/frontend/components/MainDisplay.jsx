@@ -62,8 +62,10 @@ export default function MainDisplay() {
             let cityAndWeatherInfo = await fetchCoordinatesFromName(cityName)
             console.log('handle city select: ', cityAndWeatherInfo)
             setSelectedCity(cityAndWeatherInfo)
-            setCitiesList([...citiesList, cityName])
-            console.log('Updated cities list: ', citiesList)
+            if (!citiesList.includes(cityName)){
+                setCitiesList([...citiesList, cityName])
+                console.log('Updated cities list: ', citiesList)
+            }
         } catch (error) {
             console.error('Error fetching weather info for selected city: ', error)
             setErrorGettingUserLocation(true)
@@ -78,7 +80,7 @@ export default function MainDisplay() {
             <div className="main-display">
                 <div className="main-display-header">Weather App</div>
                 <SearchBar onCitySelect={handleCitySelect} />
-                <CityNavigator citiesList={citiesList} selectedCity={selectedCity} />
+                <CityNavigator citiesList={citiesList} selectedCity={selectedCity} onTabChange={handleCitySelect}/>
             </div>
         )
     } else if (errorGettingUserLocation === true) {

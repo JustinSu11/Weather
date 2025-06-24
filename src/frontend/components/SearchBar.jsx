@@ -69,7 +69,7 @@ export default function SearchBar({ onCitySelect }) {
                 console.log('Input changed:', newInputValue)
                 setInputValue(newInputValue);
             }}
-            options={ inputValue !== '' && loading === false ? suggestions.map((suggestion) => suggestion.name) : ['No suggestions found']}
+            options={ inputValue !== '' && loading === false && suggestions.length > 0 ? suggestions.map((suggestion) => suggestion.name) : ['No suggestions found']}
             freeSolo
             type='search'
             loading={loading}
