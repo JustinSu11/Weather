@@ -38,7 +38,7 @@ export default function MainDisplay() {
                     if (citiesList.some(city => city.cityName === userLocation.cityName)) {
                         console.log('City already in list: ', userLocation.cityName)
                     } else {
-                        setCitiesList(prevCitiesList => [...prevCitiesList, userLocation])
+                        setCitiesList(prevCitiesList => [...prevCitiesList, userLocation.cityName])
                     }
                 }
             } catch (error) {
