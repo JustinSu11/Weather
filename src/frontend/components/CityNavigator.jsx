@@ -6,7 +6,7 @@ import WeatherInfoCard from './WeatherInfoCard';
 
 const CityNavigator = (props) => {
     return (
-        <Tabs sx={{ borderRadius: '4px' }} value={props.selectedCity ? `${props.selectedCity.cityName.name}, ${props.selectedCity.cityName.state}` : false} onChange={(event, newValue) => {
+        <Tabs sx={{ borderRadius: '4px', maxWidth: '80vw' }} value={props.selectedCity ? `${props.selectedCity.cityName.name}, ${props.selectedCity.cityName.state}` : false} onChange={(event, newValue) => {
             props.onTabChange(newValue)
             console.log('Tab changed to:', newValue)
         }}>
