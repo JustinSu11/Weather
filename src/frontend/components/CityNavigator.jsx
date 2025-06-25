@@ -11,7 +11,7 @@ const CityNavigator = (props) => {
         }}>
             <TabList>
                 {props.citiesList.map((city) => (
-                    <Tab variant="plain" color="neutral" key={city.cityName} value={city.cityName}>{city.cityName}</Tab>
+                    <Tab variant="plain" color="neutral" key={city} value={city}>{city}</Tab>
                 ))}
             </TabList>
             <TabPanel value={props.selectedCity?.cityName || false}>
