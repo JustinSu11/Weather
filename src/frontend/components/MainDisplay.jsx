@@ -32,6 +32,7 @@ export default function MainDisplay() {
         // will attempt to fetch the user's location, set selected city, and retrieve the weather info
         const initialLoad = async () => {
             try {
+                //userLocation is an object that has the city name and weather info
                 const userLocation = await fetchUserLocation()
                 if (userLocation) {
                     setSelectedCity(userLocation)
@@ -75,7 +76,7 @@ export default function MainDisplay() {
     }
 
     const handleTabChange = (cityName) => {
-        const cityToSelect = citiesList.find(city => city.cityName === cityName)
+        const cityToSelect = citiesList.find(city => city === cityName)
         if (cityToSelect) {
             setSelectedCity(cityToSelect)
         } else {
