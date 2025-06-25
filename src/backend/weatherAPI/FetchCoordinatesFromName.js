@@ -12,7 +12,7 @@ export default async function fetchCoordinatesFromName(userInput) {
     if (!userInput.coords) {
         try {
             const response = await axios.get(apiUrl, { params: { q: userInput, limit: '5', appid: apiKey}})
-            const cityName = response.data[0].name
+            const cityName = response.data[0].name + ', ' + response.data[0].state
             const latitude = response.data[0].lat
             const longitude = response.data[0].lon
             console.log(response.data)
@@ -26,7 +26,7 @@ export default async function fetchCoordinatesFromName(userInput) {
         try {
             const weatherInfo = await fetchWeatherInfo(userInput.coords.latitude, userInput.coords.longitude)
             const reverseGeocodingResponse = await axios.get(apiUrlForReverseGeocoding, { params: { lat: userInput.coords.latitude, lon: userInput.coords.longitude, appid: apiKey}})
-            const cityName = reverseGeocodingResponse.data[0].name
+            const cityName = reverseGeocodingResponse.data[0].name + ', ' + reverseGeocodingResponse.data[0].state
             console.log(reverseGeocodingResponse.data)
             //console log for weather info object properties
             console.log('Weather info fetched from current latitude and longitude: ', weatherInfo)
