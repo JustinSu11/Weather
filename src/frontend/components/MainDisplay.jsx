@@ -75,8 +75,8 @@ export default function MainDisplay() {
         }
     }
 
-    const handleTabChange = (cityName) => {
-        const cityToSelect = citiesList.find(city => city === cityName)
+    const handleTabChange = async (cityName) => {
+        const cityToSelect = await fetchCoordinatesFromName(citiesList.find(city => city === cityName))
         if (cityToSelect) {
             setSelectedCity(cityToSelect)
         } else {
