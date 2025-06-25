@@ -16,7 +16,7 @@ export default function WeatherInfoCard(prop) {
                 {/*container for the city name and it's temperature*/}
                 <div style={{flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                     <Typography>
-                        {prop.selectedCity.cityName}
+                        {prop.selectedCity.cityName.name}, {prop.selectedCity.cityName.state}
                     </Typography>
                     <br />
                     <Typography>

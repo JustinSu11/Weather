@@ -11,10 +11,12 @@ export default async function fetchCoordinatesFromName(userInput) {
     //check if input is the position object from the browser, if it is then fetch weather info using the latitude and longitude
     if (!userInput.coords) {
         try {
+            const [city, state] = userInput.split(', ')
             const response = await axios.get(apiUrl, { params: { q: userInput, limit: '5', appid: apiKey}})
-            const cityName = response.data[0].name + ', ' + response.data[0].state
-            const latitude = response.data[0].lat
-            const longitude = response.data[0].lon
+            const filteredResponse = response.data.filter((cityNameAndState) => cityNameAndState.name === city && cityNameAndState.state === state)
+            const cityName = {name: filteredResponse[0].name, state: filteredResponse[0].state}
+            const latitude = filteredResponse[0].lat
+            const longitude = filteredResponse[0].lon
             console.log(response.data)
             const weatherInfo = await fetchWeatherInfo(latitude, longitude)
             return {cityName, weatherInfo}
@@ -26,7 +28,7 @@ export default async function fetchCoordinatesFromName(userInput) {
         try {
             const weatherInfo = await fetchWeatherInfo(userInput.coords.latitude, userInput.coords.longitude)
             const reverseGeocodingResponse = await axios.get(apiUrlForReverseGeocoding, { params: { lat: userInput.coords.latitude, lon: userInput.coords.longitude, appid: apiKey}})
-            const cityName = reverseGeocodingResponse.data[0].name + ', ' + reverseGeocodingResponse.data[0].state
+            const cityName = {name: reverseGeocodingResponse.data[0].name, state: reverseGeocodingResponse.data[0].state}
             console.log(reverseGeocodingResponse.data)
             //console log for weather info object properties
             console.log('Weather info fetched from current latitude and longitude: ', weatherInfo)

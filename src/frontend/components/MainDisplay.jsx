@@ -17,15 +17,6 @@ export default function MainDisplay() {
     const [mainDisplayLoading, setMainDisplayLoading] = useState(true)
     const [errorGettingUserLocation, setErrorGettingUserLocation] = useState(false)
 
-    // function addCityToList(cityAndWeatherInfo) {
-    //     if (!citiesList.some(cityAndWeatherInfo)) {
-    //         let newCitiesList = [...citiesList, cityAndWeatherInfo]
-    //         setCitiesList(newCitiesList)
-    //         setSelectedCity(cityAndWeatherInfo)
-    //     } else {
-    //         alert('City already in list')
-    //     }
-    // }
 
     //useEffect to run once on initial render
     useEffect(() => {
@@ -36,11 +27,7 @@ export default function MainDisplay() {
                 const userLocation = await fetchUserLocation()
                 if (userLocation) {
                     setSelectedCity(userLocation)
-                    if (citiesList.some(city => city.cityName === userLocation.cityName)) {
-                        console.log('City already in list: ', userLocation.cityName)
-                    } else {
-                        setCitiesList(prevCitiesList => [...prevCitiesList, userLocation.cityName])
-                    }
+                    setCitiesList([userLocation.cityName])
                 }
             } catch (error) {
                 console.error("Failed to fetch user location: ", error)
@@ -58,13 +45,16 @@ export default function MainDisplay() {
         if (!cityName) {
             return
         }
+        // cityName is a string in the format "City, State"
+        const [city, state] = cityName.split(', ')
+        console.log('handle city select: ', cityName)
         setMainDisplayLoading(true)
         try {
             let cityAndWeatherInfo = await fetchCoordinatesFromName(cityName)
-            console.log('handle city select: ', cityAndWeatherInfo)
+            //console.log('handle city select: ', cityAndWeatherInfo)
             setSelectedCity(cityAndWeatherInfo)
-            if (!citiesList.includes(cityName)){
-                setCitiesList(prevCitiesList => [...prevCitiesList, cityName])
+            if (!citiesList.some((city) => city.name === city && city.state === state)){
+                setCitiesList(prevCitiesList => [...prevCitiesList, { name: city, state: state}])
                 console.log('Updated cities list: ', citiesList)
             }
         } catch (error) {
@@ -76,11 +66,16 @@ export default function MainDisplay() {
     }
 
     const handleTabChange = async (cityName) => {
-        const cityToSelect = await fetchCoordinatesFromName(citiesList.find(city => city === cityName))
-        if (cityToSelect) {
-            setSelectedCity(cityToSelect)
-        } else {
-            console.warn('City not found in cities list:', cityName)
+        if (!cityName) return;
+        setMainDisplayLoading(true);
+        try {
+            const cityAndWeatherInfo = await fetchCoordinatesFromName(cityName);
+            setSelectedCity(cityAndWeatherInfo);
+        } catch (error) {
+            console.error(`Error fetching weather for tab change: ${cityName}`, error);
+            setErrorGettingUserLocation(true);
+        } finally {
+            setMainDisplayLoading(false);
         }
     }
 

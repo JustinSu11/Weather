@@ -6,15 +6,18 @@ import WeatherInfoCard from './WeatherInfoCard';
 
 const CityNavigator = (props) => {
     return (
-        <Tabs sx={{ borderRadius: '4px' }} value={props.selectedCity?.cityName || false} onChange={(event, newValue) => {
+        <Tabs sx={{ borderRadius: '4px' }} value={props.selectedCity ? `${props.selectedCity.cityName.name}, ${props.selectedCity.cityName.state}` : false} onChange={(event, newValue) => {
             props.onTabChange(newValue)
+            console.log('Tab changed to:', newValue)
         }}>
             <TabList>
-                {props.citiesList.map((cityName) => (
-                    <Tab variant="plain" color="neutral" key={cityName} value={cityName}>{cityName}</Tab>
-                ))}
+                {props.citiesList.map((cityNameAndState) => {
+                console.log('City name and state:', cityNameAndState)
+                return (
+                    <Tab sx={{borderRadius: '4px'}} variant="plain" color="neutral" key={`${cityNameAndState.name}, ${cityNameAndState.state}`} value={`${cityNameAndState.name}, ${cityNameAndState.state}`}>{cityNameAndState.name}</Tab>
+                )})}
             </TabList>
-            <TabPanel value={props.selectedCity?.cityName || false}>
+            <TabPanel value={props.selectedCity ? `${props.selectedCity.cityName.name}, ${props.selectedCity.cityName.state}` : false}>
                 {props.selectedCity && <WeatherInfoCard selectedCity={props.selectedCity} />}
             </TabPanel>
         </Tabs>
